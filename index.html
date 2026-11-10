@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ALIYA URGENCH | Women's Fashion</title>
+
 <style>
 :root{
 --purple:#713c7d;
@@ -19,6 +21,7 @@ margin:0;background:var(--cream);color:var(--deep);
 font-family:Arial,sans-serif;
 }
 button{cursor:pointer;font:inherit}
+
 header{
 position:relative;text-align:center;padding:30px 12px 25px;
 background:linear-gradient(130deg,#e8c9df,#f8e6f0,#d9c2e8);
@@ -33,33 +36,67 @@ header:after{right:12px;bottom:10px}
 font-family:Georgia,serif;font-size:clamp(27px,7vw,43px);
 font-weight:bold;letter-spacing:3px;color:#51255e;
 }
-.logo small{font-size:15px;letter-spacing:5px;display:block;margin-top:5px}
+.logo small{
+font-size:15px;letter-spacing:5px;display:block;margin-top:5px;
+}
 .tagline{font-family:Georgia,serif;font-style:italic;margin-top:13px}
+
 .top{
 display:flex;justify-content:space-between;align-items:center;
-padding:12px 16px;background:#fff9;
+padding:12px 16px;background:#fff9;gap:8px;
 }
 .top button{
 border:1px solid var(--line);background:white;color:var(--deep);
 border-radius:30px;padding:9px 14px;
 }
-.categories{
-display:flex;justify-content:center;flex-wrap:wrap;
-gap:9px;padding:18px 10px;
+.top-left{display:flex;gap:7px}
+.menu-button{
+font-size:23px!important;width:43px;height:39px;
+padding:0!important;
 }
-.categories button{
-border:1px solid #cda5cb;border-radius:30px;
-background:#fff;color:var(--purple);padding:11px 15px;
+.menu-area{position:relative;z-index:5}
+.menu-panel{
+display:none;position:absolute;right:0;top:47px;
+width:min(330px,calc(100vw - 24px));
+max-height:75vh;overflow-y:auto;
+background:#fff8fc;border:1px solid var(--line);
+border-radius:18px;padding:15px;
+box-shadow:0 8px 30px #4d245e30;
 }
-.categories button.active{
+.menu-panel.show{display:block}
+.menu-title{
+font-family:Georgia,serif;font-size:19px;
+font-weight:bold;margin:2px 0 12px;
+}
+.category-list{
+display:grid;grid-template-columns:1fr 1fr;gap:8px;
+}
+.category-list button,.brand-list button{
+border:1px solid var(--line);border-radius:12px;
+background:white;color:var(--deep);
+padding:11px 7px;font-size:13px;
+}
+.category-list button.active,.brand-list button.active{
 background:var(--purple);color:white;
 }
+.brand-list{
+display:none;grid-template-columns:1fr 1fr;
+gap:8px;margin-top:12px;padding-top:12px;
+border-top:1px solid var(--line);
+}
+.brand-list.show{display:grid}
+.menu-note{
+font-size:11px;color:#98799a;margin-top:12px;
+text-align:center;
+}
+
 .hero{text-align:center;padding:24px 15px 22px}
 .hero h2{
-font: bold 30px Georgia,serif;line-height:1.2;
+font:bold 30px Georgia,serif;line-height:1.2;
 color:var(--deep);margin:8px auto;
 }
 .hero p{color:#875c89}
+
 .products{
 display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
 gap:12px;padding:12px;
@@ -80,12 +117,25 @@ background:#fffde9e0;border:0;border-radius:50%;
 width:34px;height:34px;color:#d65c9c;font-size:21px;
 }
 .product h3{font-size:14px;margin:11px 3px 7px}
+.brand-name{
+font-size:11px;color:#a36c9b;margin:0 3px 5px;
+letter-spacing:1px;
+}
 .price{font-weight:bold;color:var(--purple);margin:6px 3px 10px}
+.old-price{
+font-size:11px;color:#999;text-decoration:line-through;
+margin-left:5px;
+}
 .add{
 width:100%;border:0;border-radius:25px;padding:11px 5px;
 background:linear-gradient(100deg,#75417f,#d47eae);
 color:white;font-weight:bold;font-size:12px;
 }
+.empty{
+grid-column:1/-1;text-align:center;padding:40px 15px;
+color:#98799a;
+}
+
 .cartbox{
 margin:18px 12px;padding:17px;
 border-radius:18px;background:linear-gradient(130deg,#f1d9eb,#e8d8f0);
@@ -97,7 +147,10 @@ border-radius:18px;background:linear-gradient(130deg,#f1d9eb,#e8d8f0);
 width:100%;padding:13px;border:0;border-radius:25px;
 background:var(--purple);color:white;font-weight:bold;
 }
-footer{text-align:center;padding:25px;background:#eedbed;color:var(--deep)}
+footer{
+text-align:center;padding:25px;
+background:#eedbed;color:var(--deep);
+}
 .overlay{
 display:none;position:fixed;inset:0;background:#24132dcc;
 z-index:10;align-items:center;justify-content:center;padding:15px;
@@ -111,151 +164,418 @@ width:100%;padding:13px;margin:7px 0;
 border:1px solid var(--line);border-radius:10px;
 background:white;font-size:15px;
 }
-.close{float:right;border:0;background:none;font-size:24px;color:var(--deep)}
-@media(min-width:700px){
-.products{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1100px;margin:auto}
+.close{
+float:right;border:0;background:none;
+font-size:24px;color:var(--deep);
 }
+@media(min-width:700px){
+.products{
+grid-template-columns:repeat(4,minmax(0,1fr));
+max-width:1100px;margin:auto;
+}
+}
+
 </style>
 </head>
+
 <body>
 
 <div class="top">
-<button onclick="setLang('uz')">O‘Z</button>
-<button onclick="setLang('ru')">РУ</button>
-<button onclick="openCart()">🛍 <span id="count">0</span></button>
+ <div class="top-left">
+  <button onclick="setLang('uz')">O‘Z</button>
+  <button onclick="setLang('ru')">РУ</button>
+ </div>
+
+ <div class="menu-area">
+  <button class="menu-button" onclick="toggleMenu()">⋮</button>
+  <div class="menu-panel" id="menuPanel">
+   <div class="menu-title" id="menuTitle">✧ Barcha kategoriyalar</div>
+   <div class="category-list" id="categoryList"></div>
+   <div class="brand-list" id="brandList"></div>
+   <div class="menu-note">ALIYA URGENCH ♡ WOMEN'S FASHION</div>
+  </div>
+ </div>
+
+ <button onclick="openCart()">🛍 <span id="count">0</span></button>
 </div>
 
 <header>
-<div class="logo">ALIYA URGENCH
-<small>WOMEN'S FASHION</small>
-</div>
-<div class="tagline" id="tagline">Ayollar uchun nafis liboslar ♡</div>
+ <div class="logo">
+  ALIYA URGENCH
+  <small>WOMEN'S FASHION</small>
+ </div>
+ <div class="tagline" id="tagline">
+  Ayollar uchun nafis liboslar ♡
+ </div>
 </header>
 
-<nav class="categories">
-<button class="active" onclick="filter('all',this)" id="cAll">✧ Barchasi</button>
-<button onclick="filter('daily',this)" id="cDaily">♧ Kundalik</button>
-<button onclick="filter('party',this)" id="cParty">♢ Bayram liboslari</button>
-<button onclick="filter('suit',this)" id="cSuit">Kostyumlar</button>
-<button onclick="filter('dress',this)" id="cDress">Ko‘ylaklar</button>
-</nav>
-
 <section class="hero">
-<h2 id="headline">Sizning uslubingiz —<br> sizning nafisligingiz ♡</h2>
-<p id="subline">Yangi kolleksiyamiz bilan tanishing</p>
+ <h2 id="headline">
+  Sizning uslubingiz —<br> sizning nafisligingiz ♡
+ </h2>
+ <p id="subline">Yangi kolleksiyamiz bilan tanishing</p>
 </section>
 
 <main class="products" id="products"></main>
 
 <section class="cartbox" id="cartSection">
-<h2 id="cartHeading">♡ Sizning savatingiz</h2>
-<div id="cartItems">Savatingiz hozircha bo‘sh</div>
-<p><b id="total">Jami: 0 so‘m</b></p>
-<button class="checkout" onclick="openOrder()" id="orderBtn">Buyurtmani rasmiylashtirish</button>
+ <h2 id="cartHeading">♡ Sizning savatingiz</h2>
+ <div id="cartItems">Savatingiz hozircha bo‘sh</div>
+ <p><b id="total">Jami: 0 so‘m</b></p>
+ <button class="checkout" onclick="openOrder()" id="orderBtn">
+  Buyurtmani rasmiylashtirish
+ </button>
 </section>
 
 <footer>
-<div class="logo">ALIYA URGENCH</div>
-<p>♡ Women's Fashion ♡</p>
-<p>Instagram: @aliya_urgench</p>
+ <div class="logo">ALIYA URGENCH</div>
+ <p>♡ Women's Fashion ♡</p>
+ <p>Instagram: @aliya_urgench</p>
 </footer>
 
 <div class="overlay" id="orderOverlay">
-<div class="modal">
-<button class="close" onclick="closeOrder()">×</button>
-<h2 id="formTitle">Buyurtma berish</h2>
-<form onsubmit="sendOrder(event)">
-<input id="customer" placeholder="Ismingiz" required>
-<input id="phone" type="tel" placeholder="Telefon raqamingiz" required>
-<select id="delivery">
-<option value="pickup">Do‘kondan olib ketish</option>
-<option value="delivery">Manzilga yetkazish</option>
-</select>
-<input id="address" placeholder="Yetkazib berish manzili (ixtiyoriy)">
-<p id="payText">To‘lov: Uzcard / Humo — to‘lov tizimi ulanishi kerak.</p>
-<button class="checkout" type="submit" id="sendBtn">Buyurtmani yuborish</button>
-</form>
-</div>
+ <div class="modal">
+  <button class="close" onclick="closeOrder()">×</button>
+  <h2 id="formTitle">Buyurtma berish</h2>
+
+  <form onsubmit="sendOrder(event)">
+   <input id="customer" placeholder="Ismingiz" required>
+   <input id="phone" type="tel" placeholder="Telefon raqamingiz" required>
+
+   <select id="delivery">
+    <option value="pickup">Do‘kondan olib ketish</option>
+    <option value="delivery">Manzilga yetkazish</option>
+   </select>
+
+   <input id="address" placeholder="Yetkazib berish manzili">
+   <p id="payText">
+    To‘lov: Uzcard / Humo — to‘lov tizimi ulanishi kerak.
+   </p>
+
+   <button class="checkout" type="submit" id="sendBtn">
+    Buyurtmani yuborish
+   </button>
+  </form>
+ </div>
 </div>
 
 <script>
-const items=[
-{id:1,name:'Elegant ko‘ylak',ru:'Элегантное платье',price:350000,cat:'dress',
-img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=700&auto=format&fit=crop'},
-{id:2,name:'Shifon ko‘ylak',ru:'Шифоновое платье',price:280000,cat:'daily',
-img:'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=700&auto=format&fit=crop'},
-{id:3,name:'Ayollar kostyumi',ru:'Женский костюм',price:420000,cat:'suit',
-img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=700&auto=format&fit=crop'},
-{id:4,name:'Bayram libosi',ru:'Праздничное платье',price:500000,cat:'party',
-img:'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=700&auto=format&fit=crop'}
+
+const categories=[
+{id:'all',uz:'✧ Barchasi',ru:'✧ Все товары'},
+{id:'daily',uz:'♧ Kundalik',ru:'♧ Повседневное'},
+{id:'jacket',uz:'Kurtkalar',ru:'Куртки'},
+{id:'pants',uz:'Shimlar',ru:'Брюки'},
+{id:'skirt',uz:'Yubkalar',ru:'Юбки'},
+{id:'coat',uz:'Plashlar',ru:'Плащи'},
+{id:'hoodie',uz:'Xudilar',ru:'Худи'},
+{id:'jogger',uz:'Polzunkalar',ru:'Джоггеры'},
+{id:'dress',uz:'Ko‘ylaklar',ru:'Платья'},
+{id:'suit',uz:'Kostyumlar',ru:'Костюмы'},
+{id:'blouse',uz:'Koftalar',ru:'Кофты'},
+{id:'sweater',uz:'Sviterlar',ru:'Свитера'},
+{id:'tshirt',uz:'Futbolkalar',ru:'Футболки'},
+{id:'jeans',uz:'Jinsilar',ru:'Джинсы'},
+{id:'accessories',uz:'Aksessuarlar',ru:'Аксессуары'},
+{id:'shoes',uz:'Oyoq kiyimlar',ru:'Обувь'},
+{id:'bags',uz:'Sumkalar',ru:'Сумки'},
+{id:'party',uz:'Bayram liboslari',ru:'Праздничные'},
+{id:'brands',uz:'✦ Brendlar',ru:'✦ Бренды'},
+{id:'new',uz:'Yangi kolleksiya',ru:'Новая коллекция'},
+{id:'sale',uz:'♡ Chegirmalar',ru:'♡ Скидки'}
 ];
-let cart=[],lang='uz',favorites=[];
+
+const brands=[
+'ZARA','NIKE','ADIDAS','PUMA',
+'H&M','MANGO','BERSHKA','BOSHQA'
+];
+
+const photos={
+dress:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=700',
+daily:'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=700',
+suit:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=700',
+jacket:'https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=700',
+pants:'https://images.unsplash.com/photo-1506629905607-d9d7a2b6d5b5?w=700',
+skirt:'https://images.unsplash.com/photo-1583496661160-fb5886a13d27?w=700',
+coat:'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=700',
+hoodie:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700',
+jogger:'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=700',
+blouse:'https://images.unsplash.com/photo-1564257577-9d4c1b5f1a76?w=700',
+sweater:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=700',
+tshirt:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700',
+jeans:'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=700',
+accessories:'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=700',
+shoes:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=700',
+bags:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700'
+};
+
+const items=[
+{id:1,name:'Elegant ko‘ylak',ru:'Элегантное платье',price:350000,cat:'dress'},
+{id:2,name:'Shifon ko‘ylak',ru:'Шифоновое платье',price:280000,cat:'daily'},
+{id:3,name:'Ayollar kostyumi',ru:'Женский костюм',price:420000,cat:'suit'},
+{id:4,name:'Bayram libosi',ru:'Праздничное платье',price:500000,cat:'party'},
+
+{id:5,name:'Qishki kurtka',ru:'Зимняя куртка',price:650000,cat:'jacket'},
+{id:6,name:'Yengil kurtka',ru:'Лёгкая куртка',price:450000,cat:'jacket'},
+{id:7,name:'Klassik shim',ru:'Классические брюки',price:250000,cat:'pants'},
+{id:8,name:'Keng shim',ru:'Широкие брюки',price:290000,cat:'pants'},
+{id:9,name:'Mini yubka',ru:'Мини-юбка',price:180000,cat:'skirt'},
+{id:10,name:'Klassik yubka',ru:'Классическая юбка',price:220000,cat:'skirt'},
+{id:11,name:'Uzun plash',ru:'Длинный плащ',price:550000,cat:'coat'},
+{id:12,name:'Klassik plash',ru:'Классический плащ',price:490000,cat:'coat'},
+{id:13,name:'Oversize xudi',ru:'Оверсайз худи',price:320000,cat:'hoodie'},
+{id:14,name:'Sport xudi',ru:'Спортивное худи',price:280000,cat:'hoodie'},
+{id:15,name:'Sport polzunok',ru:'Спортивные джоггеры',price:230000,cat:'jogger'},
+{id:16,name:'Kundalik polzunok',ru:'Повседневные джоггеры',price:210000,cat:'jogger'},
+{id:17,name:'Ayollar koftasi',ru:'Женская кофта',price:190000,cat:'blouse'},
+{id:18,name:'Zamonaviy sviter',ru:'Модный свитер',price:270000,cat:'sweater'},
+{id:19,name:'Oddiy futbolka',ru:'Футболка',price:120000,cat:'tshirt'},
+{id:20,name:'Klassik jinsi',ru:'Классические джинсы',price:300000,cat:'jeans'},
+{id:21,name:'Ayollar sumkasi',ru:'Женская сумка',price:350000,cat:'bags'},
+{id:22,name:'Nafis aksessuar',ru:'Элегантный аксессуар',price:95000,cat:'accessories'},
+{id:23,name:'Zamonaviy oyoq kiyim',ru:'Модная обувь',price:390000,cat:'shoes'},
+
+{id:24,name:'ZARA ko‘ylak',ru:'Платье ZARA',price:450000,cat:'brands',brand:'ZARA'},
+{id:25,name:'ZARA shim',ru:'Брюки ZARA',price:350000,cat:'brands',brand:'ZARA'},
+{id:26,name:'NIKE sport xudi',ru:'Спортивное худи NIKE',price:490000,cat:'brands',brand:'NIKE'},
+{id:27,name:'NIKE futbolka',ru:'Футболка NIKE',price:250000,cat:'brands',brand:'NIKE'},
+{id:28,name:'ADIDAS sport kiyim',ru:'Спортивная одежда ADIDAS',price:420000,cat:'brands',brand:'ADIDAS'},
+{id:29,name:'PUMA sport kiyim',ru:'Спортивная одежда PUMA',price:390000,cat:'brands',brand:'PUMA'},
+{id:30,name:'H&M kofta',ru:'Кофта H&M',price:260000,cat:'brands',brand:'H&M'},
+{id:31,name:'MANGO ko‘ylak',ru:'Платье MANGO',price:410000,cat:'brands',brand:'MANGO'},
+{id:32,name:'Yangi kolleksiya ko‘ylagi',ru:'Новое платье',price:380000,cat:'new'},
+{id:33,name:'Yangi kolleksiya kostyumi',ru:'Новый костюм',price:520000,cat:'new'},
+{id:34,name:'Chegirmadagi ko‘ylak',ru:'Платье со скидкой',price:220000,cat:'sale',old:350000},
+{id:35,name:'Chegirmadagi xudi',ru:'Худи со скидкой',price:190000,cat:'sale',old:290000}
+];
+
+let cart=[];
+let lang='uz';
+let favorites=[];
+let currentCat='all';
+let currentBrand=null;
+
 const money=n=>n.toLocaleString('ru-RU')+' so‘m';
 
-function render(list=items){
-document.getElementById('products').innerHTML=list.map(p=>`
-<article class="product">
-<div class="photo">
-<img src="${p.img}" alt="${p.name}">
-<button class="fav" onclick="favorite(${p.id},this)">${favorites.includes(p.id)?'♥':'♡'}</button>
-</div>
-<h3>${lang==='uz'?p.name:p.ru}</h3>
-<div class="price">${money(p.price)}</div>
-<button class="add" onclick="add(${p.id})">${lang==='uz'?'🛒 Savatga qo‘shish':'🛒 В корзину'}</button>
-</article>`).join('');
+function toggleMenu(){
+document.getElementById('menuPanel').classList.toggle('show');
 }
-function add(id){cart.push(items.find(p=>p.id===id));updateCart()}
+
+function closeMenu(){
+document.getElementById('menuPanel').classList.remove('show');
+}
+
+function renderCategories(){
+document.getElementById('menuTitle').textContent=
+lang==='uz'?'✧ Barcha kategoriyalar':'✧ Все категории';
+
+document.getElementById('categoryList').innerHTML=
+categories.map(c=>`
+<button class="${currentCat===c.id?'active':''}"
+onclick="selectCategory('${c.id}')">
+${lang==='uz'?c.uz:c.ru}
+</button>`).join('');
+
+renderBrands();
+}
+
+function renderBrands(){
+const box=document.getElementById('brandList');
+if(currentCat!=='brands'){
+box.classList.remove('show');
+return;
+}
+box.classList.add('show');
+box.innerHTML=brands.map(b=>`
+<button class="${currentBrand===b?'active':''}"
+onclick="selectBrand('${b}')">${b}</button>
+`).join('');
+}
+
+function selectCategory(cat){
+currentCat=cat;
+currentBrand=null;
+renderCategories();
+renderProducts();
+if(cat!=='brands')closeMenu();
+}
+
+function selectBrand(brand){
+currentBrand=brand;
+renderCategories();
+renderProducts();
+closeMenu();
+}
+
+function renderProducts(){
+let list=items;
+
+if(currentCat!=='all'){
+list=items.filter(p=>{
+if(currentCat==='brands'){
+return p.cat==='brands' &&
+(!currentBrand || p.brand===currentBrand);
+}
+if(currentCat==='daily'){
+return p.cat==='daily'||p.cat==='tshirt'||
+p.cat==='blouse'||p.cat==='jeans';
+}
+if(currentCat==='party'){
+return p.cat==='party'||p.cat==='dress';
+}
+return p.cat===currentCat;
+});
+}
+
+const box=document.getElementById('products');
+
+if(!list.length){
+box.innerHTML='<div class="empty">Bu kategoriyada hozircha mahsulot yo‘q ♡</div>';
+return;
+}
+
+box.innerHTML=list.map(p=>{
+const img=photos[p.cat]||photos.dress;
+return `
+<article class="product">
+ <div class="photo">
+  <img src="${img}" alt="${p.name}" loading="lazy">
+  <button class="fav" onclick="favorite(${p.id},this)">
+  ${favorites.includes(p.id)?'♥':'♡'}
+  </button>
+ </div>
+ ${p.brand?`<div class="brand-name">${p.brand}</div>`:''}
+ <h3>${lang==='uz'?p.name:p.ru}</h3>
+ <div class="price">
+  ${money(p.price)}
+  ${p.old?`<span class="old-price">${money(p.old)}</span>`:''}
+ </div>
+ <button class="add" onclick="add(${p.id})">
+ ${lang==='uz'?'🛒 Savatga qo‘shish':'🛒 В корзину'}
+ </button>
+</article>`;
+}).join('');
+}
+
 function favorite(id,b){
-if(favorites.includes(id))favorites=favorites.filter(x=>x!==id);
-else favorites.push(id);
+if(favorites.includes(id)){
+favorites=favorites.filter(x=>x!==id);
+}else{
+favorites.push(id);
+}
 b.textContent=favorites.includes(id)?'♥':'♡';
 }
-function filter(cat,b){
-document.querySelectorAll('.categories button').forEach(x=>x.classList.remove('active'));
-b.classList.add('active');
-render(cat==='all'?items:items.filter(p=>p.cat===cat));
+
+function add(id){
+const product=items.find(p=>p.id===id);
+cart.push(product);
+updateCart();
 }
+
 function updateCart(){
 document.getElementById('count').textContent=cart.length;
+
 document.getElementById('cartItems').innerHTML=cart.length?
-cart.map((p,i)=>`<div class="cartrow">${lang==='uz'?p.name:p.ru} — ${money(p.price)} <button onclick="removeItem(${i})">✕</button></div>`).join(''):
+cart.map((p,i)=>`
+<div class="cartrow">
+${lang==='uz'?p.name:p.ru} — ${money(p.price)}
+<button onclick="removeItem(${i})">✕</button>
+</div>`).join(''):
 (lang==='uz'?'Savatingiz hozircha bo‘sh':'Корзина пока пуста');
-document.getElementById('total').textContent=(lang==='uz'?'Jami: ':'Итого: ')+money(cart.reduce((s,p)=>s+p.price,0));
+
+document.getElementById('total').textContent=
+(lang==='uz'?'Jami: ':'Итого: ')+
+money(cart.reduce((s,p)=>s+p.price,0));
 }
-function removeItem(i){cart.splice(i,1);updateCart()}
-function openCart(){document.getElementById('cartSection').scrollIntoView({behavior:'smooth'})}
+
+function removeItem(i){
+cart.splice(i,1);
+updateCart();
+}
+
+function openCart(){
+closeMenu();
+document.getElementById('cartSection').scrollIntoView({behavior:'smooth'});
+}
+
 function openOrder(){
-if(!cart.length){alert(lang==='uz'?'Avval savatga mahsulot qo‘shing':'Сначала добавьте товар');return}
+if(!cart.length){
+alert(lang==='uz'?'Avval savatga mahsulot qo‘shing':'Сначала добавьте товар');
+return;
+}
 document.getElementById('orderOverlay').style.display='flex';
 }
-function closeOrder(){document.getElementById('orderOverlay').style.display='none'}
+
+function closeOrder(){
+document.getElementById('orderOverlay').style.display='none';
+}
+
 function sendOrder(e){
 e.preventDefault();
-alert(lang==='uz'?'Buyurtma shakli tayyor. Buyurtmalarni qabul qilish uchun do‘konning Telegram yoki server tizimini ulashimiz kerak.':'Форма готова. Для приёма заказов нужно подключить Telegram или сервер.');
+alert(lang==='uz'?
+'Buyurtma shakli tayyor. Buyurtmalarni Telegram orqali qabul qilish tizimini keyingi bosqichda ulaymiz.':
+'Форма готова. Систему приёма заказов через Telegram подключим на следующем этапе.');
 }
+
 function setLang(l){
 lang=l;
-document.getElementById('tagline').textContent=l==='uz'?'Ayollar uchun nafis liboslar ♡':'Элегантная одежда для женщин ♡';
-document.getElementById('headline').innerHTML=l==='uz'?'Sizning uslubingiz —<br> sizning nafisligingiz ♡':'Ваш стиль —<br> ваша элегантность ♡';
-document.getElementById('subline').textContent=l==='uz'?'Yangi kolleksiyamiz bilan tanishing':'Познакомьтесь с новой коллекцией';
-document.getElementById('cAll').textContent=l==='uz'?'✧ Barchasi':'✧ Все товары';
-document.getElementById('cDaily').textContent=l==='uz'?'♧ Kundalik':'♧ Повседневное';
-document.getElementById('cParty').textContent=l==='uz'?'♢ Bayram liboslari':'♢ Праздничное';
-document.getElementById('cSuit').textContent=l==='uz'?'Kostyumlar':'Костюмы';
-document.getElementById('cDress').textContent=l==='uz'?'Ko‘ylaklar':'Платья';
-document.getElementById('cartHeading').textContent=l==='uz'?'♡ Sizning savatingiz':'♡ Ваша корзина';
-document.getElementById('orderBtn').textContent=l==='uz'?'Buyurtmani rasmiylashtirish':'Оформить заказ';
-document.getElementById('formTitle').textContent=l==='uz'?'Buyurtma berish':'Оформление заказа';
-document.getElementById('customer').placeholder=l==='uz'?'Ismingiz':'Ваше имя';
-document.getElementById('phone').placeholder=l==='uz'?'Telefon raqamingiz':'Номер телефона';
-document.getElementById('address').placeholder=l==='uz'?'Yetkazib berish manzili':'Адрес доставки';
-document.getElementById('sendBtn').textContent=l==='uz'?'Buyurtmani yuborish':'Отправить заказ';
-document.getElementById('payText').textContent=l==='uz'?'To‘lov: Uzcard / Humo — to‘lov tizimi ulanishi kerak.':'Оплата: Uzcard / Humo — требуется подключить платёжную систему.';
-document.getElementById('delivery').options[0].text=l==='uz'?'Do‘kondan olib ketish':'Самовывоз из магазина';
-document.getElementById('delivery').options[1].text=l==='uz'?'Manzilga yetkazish':'Доставка по адресу';
-render();updateCart();
+
+document.getElementById('tagline').textContent=
+l==='uz'?'Ayollar uchun nafis liboslar ♡':'Элегантная одежда для женщин ♡';
+
+document.getElementById('headline').innerHTML=
+l==='uz'?'Sizning uslubingiz —<br> sizning nafisligingiz ♡':
+'Ваш стиль —<br> ваша элегантность ♡';
+
+document.getElementById('subline').textContent=
+l==='uz'?'Yangi kolleksiyamiz bilan tanishing':
+'Познакомьтесь с новой коллекцией';
+
+document.getElementById('cartHeading').textContent=
+l==='uz'?'♡ Sizning savatingiz':'♡ Ваша корзина';
+
+document.getElementById('orderBtn').textContent=
+l==='uz'?'Buyurtmani rasmiylashtirish':'Оформить заказ';
+
+document.getElementById('formTitle').textContent=
+l==='uz'?'Buyurtma berish':'Оформление заказа';
+
+document.getElementById('customer').placeholder=
+l==='uz'?'Ismingiz':'Ваше имя';
+
+document.getElementById('phone').placeholder=
+l==='uz'?'Telefon raqamingiz':'Номер телефона';
+
+document.getElementById('address').placeholder=
+l==='uz'?'Yetkazib berish manzili':'Адрес доставки';
+
+document.getElementById('sendBtn').textContent=
+l==='uz'?'Buyurtmani yuborish':'Отправить заказ';
+
+document.getElementById('payText').textContent=
+l==='uz'?'To‘lov: Uzcard / Humo — to‘lov tizimi ulanishi kerak.':
+'Оплата: Uzcard / Humo — требуется подключить платёжную систему.';
+
+document.getElementById('delivery').options[0].text=
+l==='uz'?'Do‘kondan olib ketish':'Самовывоз из магазина';
+
+document.getElementById('delivery').options[1].text=
+l==='uz'?'Manzilga yetkazish':'Доставка по адресу';
+
+renderCategories();
+renderProducts();
+updateCart();
 }
-render();updateCart();
+
+document.addEventListener('click',function(e){
+const area=document.querySelector('.menu-area');
+if(!area.contains(e.target))closeMenu();
+});
+
+renderCategories();
+renderProducts();
+updateCart();
+
 </script>
 </body>
 </html>
