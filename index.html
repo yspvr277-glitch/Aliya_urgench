@@ -2,109 +2,260 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ALIYA URGENCH</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALIYA URGENCH | Women's Fashion</title>
 <style>
+:root{
+--purple:#713c7d;
+--deep:#4d245e;
+--pink:#e68abd;
+--light:#f8eaf3;
+--cream:#fff8fc;
+--line:#e5c4dc;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#faf7f2;color:#493a30;font-family:Arial,sans-serif}
-header{text-align:center;padding:25px 12px;background:#eee5d9}
-h1{letter-spacing:5px;margin:5px}
-header p{font-size:11px;letter-spacing:3px}
-nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:15px}
-button{border:1px solid #bba995;background:#fffaf4;color:#493a30;padding:10px 15px;border-radius:20px}
-button:active{background:#d9c5ae}
-.hero{text-align:center;padding:35px 10px}
-.hero h2{font-family:Georgia,serif;font-size:30px}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
-.product{background:white;padding:9px;border-radius:10px}
-.product img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:7px}
-.product h3{font-size:14px}
-.price{font-weight:bold}
-.cart{margin:15px;padding:18px;background:#eee5d9;border-radius:12px}
-.cart h2{font-size:20px}
-footer{text-align:center;padding:25px;font-size:12px}
+body{
+margin:0;background:var(--cream);color:var(--deep);
+font-family:Arial,sans-serif;
+}
+button{cursor:pointer;font:inherit}
+header{
+position:relative;text-align:center;padding:30px 12px 25px;
+background:linear-gradient(130deg,#e8c9df,#f8e6f0,#d9c2e8);
+overflow:hidden;
+}
+header:before,header:after{
+content:"✿";position:absolute;font-size:75px;color:#fff8;
+}
+header:before{left:12px;top:15px}
+header:after{right:12px;bottom:10px}
+.logo{
+font-family:Georgia,serif;font-size:clamp(27px,7vw,43px);
+font-weight:bold;letter-spacing:3px;color:#51255e;
+}
+.logo small{font-size:15px;letter-spacing:5px;display:block;margin-top:5px}
+.tagline{font-family:Georgia,serif;font-style:italic;margin-top:13px}
+.top{
+display:flex;justify-content:space-between;align-items:center;
+padding:12px 16px;background:#fff9;
+}
+.top button{
+border:1px solid var(--line);background:white;color:var(--deep);
+border-radius:30px;padding:9px 14px;
+}
+.categories{
+display:flex;justify-content:center;flex-wrap:wrap;
+gap:9px;padding:18px 10px;
+}
+.categories button{
+border:1px solid #cda5cb;border-radius:30px;
+background:#fff;color:var(--purple);padding:11px 15px;
+}
+.categories button.active{
+background:var(--purple);color:white;
+}
+.hero{text-align:center;padding:24px 15px 22px}
+.hero h2{
+font: bold 30px Georgia,serif;line-height:1.2;
+color:var(--deep);margin:8px auto;
+}
+.hero p{color:#875c89}
+.products{
+display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;padding:12px;
+}
+.product{
+background:white;border:1px solid #efd9e9;
+border-radius:18px;padding:8px;overflow:hidden;
+box-shadow:0 4px 15px #693b7010;
+}
+.photo{position:relative}
+.photo img{
+width:100%;aspect-ratio:3/4;object-fit:cover;
+border-radius:13px;display:block;background:#f1e3ee;
+}
+.fav{
+position:absolute;right:8px;top:8px;
+background:#fffde9e0;border:0;border-radius:50%;
+width:34px;height:34px;color:#d65c9c;font-size:21px;
+}
+.product h3{font-size:14px;margin:11px 3px 7px}
+.price{font-weight:bold;color:var(--purple);margin:6px 3px 10px}
+.add{
+width:100%;border:0;border-radius:25px;padding:11px 5px;
+background:linear-gradient(100deg,#75417f,#d47eae);
+color:white;font-weight:bold;font-size:12px;
+}
+.cartbox{
+margin:18px 12px;padding:17px;
+border-radius:18px;background:linear-gradient(130deg,#f1d9eb,#e8d8f0);
+}
+.cartbox h2{font-family:Georgia,serif}
+.cartrow{padding:8px 0;border-bottom:1px solid #d6b8d5}
+.cartrow button{border:0;background:none;color:#a33}
+.checkout{
+width:100%;padding:13px;border:0;border-radius:25px;
+background:var(--purple);color:white;font-weight:bold;
+}
+footer{text-align:center;padding:25px;background:#eedbed;color:var(--deep)}
+.overlay{
+display:none;position:fixed;inset:0;background:#24132dcc;
+z-index:10;align-items:center;justify-content:center;padding:15px;
+}
+.modal{
+background:#fff8fc;width:100%;max-width:420px;
+max-height:90vh;overflow:auto;border-radius:20px;padding:20px;
+}
+.modal input,.modal select{
+width:100%;padding:13px;margin:7px 0;
+border:1px solid var(--line);border-radius:10px;
+background:white;font-size:15px;
+}
+.close{float:right;border:0;background:none;font-size:24px;color:var(--deep)}
+@media(min-width:700px){
+.products{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1100px;margin:auto}
+}
 </style>
 </head>
 <body>
 
-<header>
-<h1>ALIYA</h1>
-<p>URGENCH • WOMEN'S FASHION</p>
-</header>
-
-<nav>
+<div class="top">
 <button onclick="setLang('uz')">O‘Z</button>
 <button onclick="setLang('ru')">РУ</button>
-<button onclick="showAll()" id="all">Barchasi</button>
-<button onclick="filter('daily')" id="daily">Kundalik</button>
-<button onclick="filter('party')" id="party">Bayram liboslari</button>
+<button onclick="openCart()">🛍 <span id="count">0</span></button>
+</div>
+
+<header>
+<div class="logo">ALIYA URGENCH
+<small>WOMEN'S FASHION</small>
+</div>
+<div class="tagline" id="tagline">Ayollar uchun nafis liboslar ♡</div>
+</header>
+
+<nav class="categories">
+<button class="active" onclick="filter('all',this)" id="cAll">✧ Barchasi</button>
+<button onclick="filter('daily',this)" id="cDaily">♧ Kundalik</button>
+<button onclick="filter('party',this)" id="cParty">♢ Bayram liboslari</button>
+<button onclick="filter('suit',this)" id="cSuit">Kostyumlar</button>
+<button onclick="filter('dress',this)" id="cDress">Ko‘ylaklar</button>
 </nav>
 
 <section class="hero">
-<h2 id="welcome">Sizning uslubingiz — sizning nafisligingiz</h2>
-<p id="subtitle">Yangi kolleksiyamiz bilan tanishing</p>
+<h2 id="headline">Sizning uslubingiz —<br> sizning nafisligingiz ♡</h2>
+<p id="subline">Yangi kolleksiyamiz bilan tanishing</p>
 </section>
 
-<div class="products" id="products"></div>
+<main class="products" id="products"></main>
 
-<section class="cart">
-<h2 id="cartTitle">🛍 Savatingiz</h2>
-<div id="items">Savatingiz hozircha bo‘sh</div>
-<p id="total">Jami: 0 so‘m</p>
-<button onclick="checkout()" id="order">Buyurtma berish</button>
+<section class="cartbox" id="cartSection">
+<h2 id="cartHeading">♡ Sizning savatingiz</h2>
+<div id="cartItems">Savatingiz hozircha bo‘sh</div>
+<p><b id="total">Jami: 0 so‘m</b></p>
+<button class="checkout" onclick="openOrder()" id="orderBtn">Buyurtmani rasmiylashtirish</button>
 </section>
 
 <footer>
-ALIYA URGENCH<br>
-Women's Fashion
+<div class="logo">ALIYA URGENCH</div>
+<p>♡ Women's Fashion ♡</p>
+<p>Instagram: @aliya_urgench</p>
 </footer>
 
+<div class="overlay" id="orderOverlay">
+<div class="modal">
+<button class="close" onclick="closeOrder()">×</button>
+<h2 id="formTitle">Buyurtma berish</h2>
+<form onsubmit="sendOrder(event)">
+<input id="customer" placeholder="Ismingiz" required>
+<input id="phone" type="tel" placeholder="Telefon raqamingiz" required>
+<select id="delivery">
+<option value="pickup">Do‘kondan olib ketish</option>
+<option value="delivery">Manzilga yetkazish</option>
+</select>
+<input id="address" placeholder="Yetkazib berish manzili (ixtiyoriy)">
+<p id="payText">To‘lov: Uzcard / Humo — to‘lov tizimi ulanishi kerak.</p>
+<button class="checkout" type="submit" id="sendBtn">Buyurtmani yuborish</button>
+</form>
+</div>
+</div>
+
 <script>
-let lang='uz';
-let cart=[];
-const products=[
-{name:'Kundalik libos',price:250000,cat:'daily',img:'https://placehold.co/400x550/e9dfd2/493a30?text=ALIYA+1'},
-{name:'Elegant ko‘ylak',price:450000,cat:'party',img:'https://placehold.co/400x550/e9dfd2/493a30?text=ALIYA+2'},
-{name:'Ayollar kostyumi',price:350000,cat:'daily',img:'https://placehold.co/400x550/e9dfd2/493a30?text=ALIYA+3'},
-{name:'Bayram libosi',price:500000,cat:'party',img:'https://placehold.co/400x550/e9dfd2/493a30?text=ALIYA+4'}
+const items=[
+{id:1,name:'Elegant ko‘ylak',ru:'Элегантное платье',price:350000,cat:'dress',
+img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=700&auto=format&fit=crop'},
+{id:2,name:'Shifon ko‘ylak',ru:'Шифоновое платье',price:280000,cat:'daily',
+img:'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=700&auto=format&fit=crop'},
+{id:3,name:'Ayollar kostyumi',ru:'Женский костюм',price:420000,cat:'suit',
+img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=700&auto=format&fit=crop'},
+{id:4,name:'Bayram libosi',ru:'Праздничное платье',price:500000,cat:'party',
+img:'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=700&auto=format&fit=crop'}
 ];
-function render(list=products){
-document.getElementById('products').innerHTML=list.map((p,i)=>`
-<div class="product">
-<img src="${p.img}">
-<h3>${p.name}</h3>
-<p class="price">${p.price.toLocaleString()} so‘m</p>
-<button onclick="add(${products.indexOf(p)})">Savatga qo‘shish</button>
-</div>`).join('');
+let cart=[],lang='uz',favorites=[];
+const money=n=>n.toLocaleString('ru-RU')+' so‘m';
+
+function render(list=items){
+document.getElementById('products').innerHTML=list.map(p=>`
+<article class="product">
+<div class="photo">
+<img src="${p.img}" alt="${p.name}">
+<button class="fav" onclick="favorite(${p.id},this)">${favorites.includes(p.id)?'♥':'♡'}</button>
+</div>
+<h3>${lang==='uz'?p.name:p.ru}</h3>
+<div class="price">${money(p.price)}</div>
+<button class="add" onclick="add(${p.id})">${lang==='uz'?'🛒 Savatga qo‘shish':'🛒 В корзину'}</button>
+</article>`).join('');
 }
-function add(i){cart.push(products[i]);updateCart()}
+function add(id){cart.push(items.find(p=>p.id===id));updateCart()}
+function favorite(id,b){
+if(favorites.includes(id))favorites=favorites.filter(x=>x!==id);
+else favorites.push(id);
+b.textContent=favorites.includes(id)?'♥':'♡';
+}
+function filter(cat,b){
+document.querySelectorAll('.categories button').forEach(x=>x.classList.remove('active'));
+b.classList.add('active');
+render(cat==='all'?items:items.filter(p=>p.cat===cat));
+}
 function updateCart(){
-document.getElementById('items').innerHTML=cart.length?
-cart.map((p,i)=>`${p.name} — ${p.price.toLocaleString()} so‘m <button onclick="removeItem(${i})">×</button>`).join('<hr>'):
+document.getElementById('count').textContent=cart.length;
+document.getElementById('cartItems').innerHTML=cart.length?
+cart.map((p,i)=>`<div class="cartrow">${lang==='uz'?p.name:p.ru} — ${money(p.price)} <button onclick="removeItem(${i})">✕</button></div>`).join(''):
 (lang==='uz'?'Savatingiz hozircha bo‘sh':'Корзина пока пуста');
-document.getElementById('total').textContent=
-(lang==='uz'?'Jami: ':'Итого: ')+cart.reduce((s,p)=>s+p.price,0).toLocaleString()+' so‘m';
+document.getElementById('total').textContent=(lang==='uz'?'Jami: ':'Итого: ')+money(cart.reduce((s,p)=>s+p.price,0));
 }
 function removeItem(i){cart.splice(i,1);updateCart()}
-function filter(cat){render(products.filter(p=>p.cat===cat))}
-function showAll(){render()}
+function openCart(){document.getElementById('cartSection').scrollIntoView({behavior:'smooth'})}
+function openOrder(){
+if(!cart.length){alert(lang==='uz'?'Avval savatga mahsulot qo‘shing':'Сначала добавьте товар');return}
+document.getElementById('orderOverlay').style.display='flex';
+}
+function closeOrder(){document.getElementById('orderOverlay').style.display='none'}
+function sendOrder(e){
+e.preventDefault();
+alert(lang==='uz'?'Buyurtma shakli tayyor. Buyurtmalarni qabul qilish uchun do‘konning Telegram yoki server tizimini ulashimiz kerak.':'Форма готова. Для приёма заказов нужно подключить Telegram или сервер.');
+}
 function setLang(l){
 lang=l;
-document.getElementById('welcome').textContent=l==='uz'?'Sizning uslubingiz — sizning nafisligingiz':'Ваш стиль — ваша элегантность';
-document.getElementById('subtitle').textContent=l==='uz'?'Yangi kolleksiyamiz bilan tanishing':'Познакомьтесь с нашей новой коллекцией';
-document.getElementById('all').textContent=l==='uz'?'Barchasi':'Все';
-document.getElementById('daily').textContent=l==='uz'?'Kundalik':'Повседневная одежда';
-document.getElementById('party').textContent=l==='uz'?'Bayram liboslari':'Праздничные платья';
-document.getElementById('cartTitle').textContent=l==='uz'?'🛍 Savatingiz':'🛍 Ваша корзина';
-document.getElementById('order').textContent=l==='uz'?'Buyurtma berish':'Оформить заказ';
-updateCart();
+document.getElementById('tagline').textContent=l==='uz'?'Ayollar uchun nafis liboslar ♡':'Элегантная одежда для женщин ♡';
+document.getElementById('headline').innerHTML=l==='uz'?'Sizning uslubingiz —<br> sizning nafisligingiz ♡':'Ваш стиль —<br> ваша элегантность ♡';
+document.getElementById('subline').textContent=l==='uz'?'Yangi kolleksiyamiz bilan tanishing':'Познакомьтесь с новой коллекцией';
+document.getElementById('cAll').textContent=l==='uz'?'✧ Barchasi':'✧ Все товары';
+document.getElementById('cDaily').textContent=l==='uz'?'♧ Kundalik':'♧ Повседневное';
+document.getElementById('cParty').textContent=l==='uz'?'♢ Bayram liboslari':'♢ Праздничное';
+document.getElementById('cSuit').textContent=l==='uz'?'Kostyumlar':'Костюмы';
+document.getElementById('cDress').textContent=l==='uz'?'Ko‘ylaklar':'Платья';
+document.getElementById('cartHeading').textContent=l==='uz'?'♡ Sizning savatingiz':'♡ Ваша корзина';
+document.getElementById('orderBtn').textContent=l==='uz'?'Buyurtmani rasmiylashtirish':'Оформить заказ';
+document.getElementById('formTitle').textContent=l==='uz'?'Buyurtma berish':'Оформление заказа';
+document.getElementById('customer').placeholder=l==='uz'?'Ismingiz':'Ваше имя';
+document.getElementById('phone').placeholder=l==='uz'?'Telefon raqamingiz':'Номер телефона';
+document.getElementById('address').placeholder=l==='uz'?'Yetkazib berish manzili':'Адрес доставки';
+document.getElementById('sendBtn').textContent=l==='uz'?'Buyurtmani yuborish':'Отправить заказ';
+document.getElementById('payText').textContent=l==='uz'?'To‘lov: Uzcard / Humo — to‘lov tizimi ulanishi kerak.':'Оплата: Uzcard / Humo — требуется подключить платёжную систему.';
+document.getElementById('delivery').options[0].text=l==='uz'?'Do‘kondan olib ketish':'Самовывоз из магазина';
+document.getElementById('delivery').options[1].text=l==='uz'?'Manzilga yetkazish':'Доставка по адресу';
+render();updateCart();
 }
-function checkout(){
-if(!cart.length){alert(lang==='uz'?'Avval savatga kiyim qo‘shing':'Сначала добавьте товар');return}
-alert(lang==='uz'?'Buyurtma tizimi keyingi bosqichda ulanadi':'Система заказов будет подключена на следующем этапе');
-}
-render();
-updateCart();
+render();updateCart();
 </script>
 </body>
 </html>
