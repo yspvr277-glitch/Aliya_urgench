@@ -3,7 +3,7 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ALIYA URGENCH | Women's Fashion</title>
 
 <style>
@@ -16,165 +16,232 @@
 --line:#e5c4dc;
 }
 *{box-sizing:border-box}
-body{
-margin:0;background:var(--cream);color:var(--deep);
+html,body{
+margin:0;width:100%;overflow-x:hidden;
+background:var(--cream);color:var(--deep);
 font-family:Arial,sans-serif;
 }
 button{cursor:pointer;font:inherit}
 
-header{
-position:relative;text-align:center;padding:30px 12px 25px;
-background:linear-gradient(130deg,#e8c9df,#f8e6f0,#d9c2e8);
-overflow:hidden;
-}
-header:before,header:after{
-content:"✿";position:absolute;font-size:75px;color:#fff8;
-}
-header:before{left:12px;top:15px}
-header:after{right:12px;bottom:10px}
-.logo{
-font-family:Georgia,serif;font-size:clamp(27px,7vw,43px);
-font-weight:bold;letter-spacing:3px;color:#51255e;
-}
-.logo small{
-font-size:15px;letter-spacing:5px;display:block;margin-top:5px;
-}
-.tagline{font-family:Georgia,serif;font-style:italic;margin-top:13px}
-
+/* TOP */
 .top{
-display:flex;justify-content:space-between;align-items:center;
-padding:12px 16px;background:#fff9;gap:8px;
-}
-.top button{
-border:1px solid var(--line);background:white;color:var(--deep);
-border-radius:30px;padding:9px 14px;
+display:flex;justify-content:space-between;
+align-items:center;gap:8px;
+padding:12px 14px;background:#fff9;
+position:relative;z-index:30;
 }
 .top-left{display:flex;gap:7px}
-.menu-button{
-font-size:23px!important;width:43px;height:39px;
-padding:0!important;
+.top button{
+border:1px solid var(--line);
+background:white;color:var(--deep);
+border-radius:30px;padding:9px 13px;
 }
-.menu-area{position:relative;z-index:5}
+.menu-area{position:static}
+.menu-button{
+font-size:25px!important;
+width:44px;height:40px;padding:0!important;
+}
+
+/* MENU */
 .menu-panel{
-display:none;position:absolute;right:0;top:47px;
-width:min(330px,calc(100vw - 24px));
-max-height:75vh;overflow-y:auto;
-background:#fff8fc;border:1px solid var(--line);
-border-radius:18px;padding:15px;
-box-shadow:0 8px 30px #4d245e30;
+display:none;
+position:fixed;
+top:70px;
+right:12px;
+left:12px;
+width:auto;
+max-width:420px;
+margin-left:auto;
+max-height:calc(100dvh - 90px);
+overflow-y:auto;
+overscroll-behavior:contain;
+background:#fff8fc;
+border:1px solid var(--line);
+border-radius:20px;
+padding:17px;
+box-shadow:0 8px 30px #4d245e35;
+z-index:100;
 }
 .menu-panel.show{display:block}
 .menu-title{
-font-family:Georgia,serif;font-size:19px;
-font-weight:bold;margin:2px 0 12px;
+font-family:Georgia,serif;
+font-size:20px;font-weight:bold;
+text-align:center;margin-bottom:15px;
 }
 .category-list{
-display:grid;grid-template-columns:1fr 1fr;gap:8px;
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:9px;
 }
 .category-list button,.brand-list button{
-border:1px solid var(--line);border-radius:12px;
+min-width:0;
+border:1px solid var(--line);
+border-radius:13px;
 background:white;color:var(--deep);
-padding:11px 7px;font-size:13px;
+padding:12px 5px;font-size:13px;
+overflow-wrap:anywhere;
 }
-.category-list button.active,.brand-list button.active{
+.category-list button.active,
+.brand-list button.active{
 background:var(--purple);color:white;
 }
 .brand-list{
-display:none;grid-template-columns:1fr 1fr;
-gap:8px;margin-top:12px;padding-top:12px;
+display:none;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:9px;margin-top:13px;
+padding-top:13px;
 border-top:1px solid var(--line);
 }
 .brand-list.show{display:grid}
 .menu-note{
-font-size:11px;color:#98799a;margin-top:12px;
-text-align:center;
+font-size:11px;color:#98799a;
+text-align:center;margin-top:15px;
 }
 
+/* HEADER */
+header{
+position:relative;text-align:center;
+padding:30px 12px 25px;
+background:linear-gradient(130deg,#e8c9df,#f8e6f0,#d9c2e8);
+overflow:hidden;
+}
+header:before,header:after{
+content:"✿";position:absolute;
+font-size:75px;color:#fff8;
+}
+header:before{left:12px;top:15px}
+header:after{right:12px;bottom:10px}
+.logo{
+font-family:Georgia,serif;
+font-size:clamp(27px,7vw,43px);
+font-weight:bold;letter-spacing:3px;
+color:#51255e;
+}
+.logo small{
+font-size:15px;letter-spacing:5px;
+display:block;margin-top:5px;
+}
+.tagline{
+font-family:Georgia,serif;
+font-style:italic;margin-top:13px;
+}
+
+/* HERO */
 .hero{text-align:center;padding:24px 15px 22px}
 .hero h2{
-font:bold 30px Georgia,serif;line-height:1.2;
-color:var(--deep);margin:8px auto;
+font:bold 30px Georgia,serif;
+line-height:1.2;color:var(--deep);
+margin:8px auto;
 }
 .hero p{color:#875c89}
 
+/* PRODUCTS */
 .products{
-display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
 gap:12px;padding:12px;
 }
 .product{
-background:white;border:1px solid #efd9e9;
-border-radius:18px;padding:8px;overflow:hidden;
+min-width:0;background:white;
+border:1px solid #efd9e9;
+border-radius:18px;padding:8px;
+overflow:hidden;
 box-shadow:0 4px 15px #693b7010;
 }
 .photo{position:relative}
 .photo img{
-width:100%;aspect-ratio:3/4;object-fit:cover;
-border-radius:13px;display:block;background:#f1e3ee;
+width:100%;aspect-ratio:3/4;
+object-fit:cover;border-radius:13px;
+display:block;background:#f1e3ee;
 }
 .fav{
 position:absolute;right:8px;top:8px;
-background:#fffde9e0;border:0;border-radius:50%;
-width:34px;height:34px;color:#d65c9c;font-size:21px;
+background:#fffde9e0;border:0;
+border-radius:50%;width:34px;height:34px;
+color:#d65c9c;font-size:21px;
 }
-.product h3{font-size:14px;margin:11px 3px 7px}
+.product h3{
+font-size:14px;margin:11px 3px 7px;
+}
 .brand-name{
-font-size:11px;color:#a36c9b;margin:0 3px 5px;
-letter-spacing:1px;
+font-size:11px;color:#a36c9b;
+margin:0 3px 5px;letter-spacing:1px;
 }
-.price{font-weight:bold;color:var(--purple);margin:6px 3px 10px}
+.price{
+font-weight:bold;color:var(--purple);
+margin:6px 3px 10px;font-size:13px;
+}
 .old-price{
-font-size:11px;color:#999;text-decoration:line-through;
-margin-left:5px;
+font-size:10px;color:#999;
+text-decoration:line-through;margin-left:3px;
 }
 .add{
-width:100%;border:0;border-radius:25px;padding:11px 5px;
+width:100%;border:0;border-radius:25px;
+padding:11px 5px;
 background:linear-gradient(100deg,#75417f,#d47eae);
 color:white;font-weight:bold;font-size:12px;
 }
 .empty{
-grid-column:1/-1;text-align:center;padding:40px 15px;
+grid-column:1/-1;
+text-align:center;padding:40px 15px;
 color:#98799a;
 }
 
+/* CART */
 .cartbox{
 margin:18px 12px;padding:17px;
-border-radius:18px;background:linear-gradient(130deg,#f1d9eb,#e8d8f0);
+border-radius:18px;
+background:linear-gradient(130deg,#f1d9eb,#e8d8f0);
 }
 .cartbox h2{font-family:Georgia,serif}
-.cartrow{padding:8px 0;border-bottom:1px solid #d6b8d5}
-.cartrow button{border:0;background:none;color:#a33}
+.cartrow{
+padding:8px 0;border-bottom:1px solid #d6b8d5;
+font-size:13px;
+}
+.cartrow button{
+border:0;background:none;color:#a33;
+}
 .checkout{
-width:100%;padding:13px;border:0;border-radius:25px;
-background:var(--purple);color:white;font-weight:bold;
+width:100%;padding:13px;border:0;
+border-radius:25px;background:var(--purple);
+color:white;font-weight:bold;
 }
 footer{
 text-align:center;padding:25px;
 background:#eedbed;color:var(--deep);
 }
+
+/* ORDER */
 .overlay{
-display:none;position:fixed;inset:0;background:#24132dcc;
-z-index:10;align-items:center;justify-content:center;padding:15px;
+display:none;position:fixed;inset:0;
+background:#24132dcc;z-index:200;
+align-items:center;justify-content:center;
+padding:15px;
 }
 .modal{
-background:#fff8fc;width:100%;max-width:420px;
-max-height:90vh;overflow:auto;border-radius:20px;padding:20px;
+background:#fff8fc;width:100%;
+max-width:420px;max-height:90vh;
+overflow:auto;border-radius:20px;padding:20px;
 }
 .modal input,.modal select{
 width:100%;padding:13px;margin:7px 0;
-border:1px solid var(--line);border-radius:10px;
-background:white;font-size:15px;
+border:1px solid var(--line);
+border-radius:10px;background:white;font-size:15px;
 }
 .close{
 float:right;border:0;background:none;
 font-size:24px;color:var(--deep);
 }
+
 @media(min-width:700px){
 .products{
 grid-template-columns:repeat(4,minmax(0,1fr));
 max-width:1100px;margin:auto;
 }
+.menu-panel{
+left:auto;width:380px;
 }
-
+}
 </style>
 </head>
 
@@ -188,15 +255,16 @@ max-width:1100px;margin:auto;
 
  <div class="menu-area">
   <button class="menu-button" onclick="toggleMenu()">⋮</button>
-  <div class="menu-panel" id="menuPanel">
-   <div class="menu-title" id="menuTitle">✧ Barcha kategoriyalar</div>
-   <div class="category-list" id="categoryList"></div>
-   <div class="brand-list" id="brandList"></div>
-   <div class="menu-note">ALIYA URGENCH ♡ WOMEN'S FASHION</div>
-  </div>
  </div>
 
  <button onclick="openCart()">🛍 <span id="count">0</span></button>
+</div>
+
+<div class="menu-panel" id="menuPanel">
+ <div class="menu-title" id="menuTitle">✧ Barcha kategoriyalar</div>
+ <div class="category-list" id="categoryList"></div>
+ <div class="brand-list" id="brandList"></div>
+ <div class="menu-note">ALIYA URGENCH ♡ WOMEN'S FASHION</div>
 </div>
 
 <header>
@@ -237,21 +305,15 @@ max-width:1100px;margin:auto;
  <div class="modal">
   <button class="close" onclick="closeOrder()">×</button>
   <h2 id="formTitle">Buyurtma berish</h2>
-
   <form onsubmit="sendOrder(event)">
    <input id="customer" placeholder="Ismingiz" required>
    <input id="phone" type="tel" placeholder="Telefon raqamingiz" required>
-
    <select id="delivery">
     <option value="pickup">Do‘kondan olib ketish</option>
     <option value="delivery">Manzilga yetkazish</option>
    </select>
-
    <input id="address" placeholder="Yetkazib berish manzili">
-   <p id="payText">
-    To‘lov: Uzcard / Humo — to‘lov tizimi ulanishi kerak.
-   </p>
-
+   <p id="payText">To‘lov: Uzcard / Humo — tizim ulanishi kerak.</p>
    <button class="checkout" type="submit" id="sendBtn">
     Buyurtmani yuborish
    </button>
@@ -260,7 +322,6 @@ max-width:1100px;margin:auto;
 </div>
 
 <script>
-
 const categories=[
 {id:'all',uz:'✧ Barchasi',ru:'✧ Все товары'},
 {id:'daily',uz:'♧ Kundalik',ru:'♧ Повседневное'},
@@ -314,7 +375,6 @@ const items=[
 {id:2,name:'Shifon ko‘ylak',ru:'Шифоновое платье',price:280000,cat:'daily'},
 {id:3,name:'Ayollar kostyumi',ru:'Женский костюм',price:420000,cat:'suit'},
 {id:4,name:'Bayram libosi',ru:'Праздничное платье',price:500000,cat:'party'},
-
 {id:5,name:'Qishki kurtka',ru:'Зимняя куртка',price:650000,cat:'jacket'},
 {id:6,name:'Yengil kurtka',ru:'Лёгкая куртка',price:450000,cat:'jacket'},
 {id:7,name:'Klassik shim',ru:'Классические брюки',price:250000,cat:'pants'},
@@ -334,7 +394,6 @@ const items=[
 {id:21,name:'Ayollar sumkasi',ru:'Женская сумка',price:350000,cat:'bags'},
 {id:22,name:'Nafis aksessuar',ru:'Элегантный аксессуар',price:95000,cat:'accessories'},
 {id:23,name:'Zamonaviy oyoq kiyim',ru:'Модная обувь',price:390000,cat:'shoes'},
-
 {id:24,name:'ZARA ko‘ylak',ru:'Платье ZARA',price:450000,cat:'brands',brand:'ZARA'},
 {id:25,name:'ZARA shim',ru:'Брюки ZARA',price:350000,cat:'brands',brand:'ZARA'},
 {id:26,name:'NIKE sport xudi',ru:'Спортивное худи NIKE',price:490000,cat:'brands',brand:'NIKE'},
@@ -345,8 +404,8 @@ const items=[
 {id:31,name:'MANGO ko‘ylak',ru:'Платье MANGO',price:410000,cat:'brands',brand:'MANGO'},
 {id:32,name:'Yangi kolleksiya ko‘ylagi',ru:'Новое платье',price:380000,cat:'new'},
 {id:33,name:'Yangi kolleksiya kostyumi',ru:'Новый костюм',price:520000,cat:'new'},
-{id:34,name:'Chegirmadagi ko‘ylak',ru:'Платье со скидкой',price:220000,cat:'sale',old:350000},
-{id:35,name:'Chegirmadagi xudi',ru:'Худи со скидкой',price:190000,cat:'sale',old:290000}
+{id:34,name:'Chegirmadagi ko‘ylak',ru:'Платье со скидкой',price:220000,old:350000,cat:'sale'},
+{id:35,name:'Chegirmadagi xudi',ru:'Худи со скидкой',price:190000,old:290000,cat:'sale'}
 ];
 
 let cart=[];
@@ -413,15 +472,14 @@ let list=items;
 if(currentCat!=='all'){
 list=items.filter(p=>{
 if(currentCat==='brands'){
-return p.cat==='brands' &&
-(!currentBrand || p.brand===currentBrand);
+return p.cat==='brands'&&
+(!currentBrand||p.brand===currentBrand);
 }
 if(currentCat==='daily'){
-return p.cat==='daily'||p.cat==='tshirt'||
-p.cat==='blouse'||p.cat==='jeans';
+return ['daily','tshirt','blouse','jeans'].includes(p.cat);
 }
 if(currentCat==='party'){
-return p.cat==='party'||p.cat==='dress';
+return ['party','dress'].includes(p.cat);
 }
 return p.cat===currentCat;
 });
@@ -434,12 +492,11 @@ box.innerHTML='<div class="empty">Bu kategoriyada hozircha mahsulot yo‘q ♡</
 return;
 }
 
-box.innerHTML=list.map(p=>{
-const img=photos[p.cat]||photos.dress;
-return `
+box.innerHTML=list.map(p=>`
 <article class="product">
  <div class="photo">
-  <img src="${img}" alt="${p.name}" loading="lazy">
+  <img src="${photos[p.cat]||photos.dress}"
+  alt="${p.name}" loading="lazy">
   <button class="fav" onclick="favorite(${p.id},this)">
   ${favorites.includes(p.id)?'♥':'♡'}
   </button>
@@ -447,14 +504,14 @@ return `
  ${p.brand?`<div class="brand-name">${p.brand}</div>`:''}
  <h3>${lang==='uz'?p.name:p.ru}</h3>
  <div class="price">
-  ${money(p.price)}
-  ${p.old?`<span class="old-price">${money(p.old)}</span>`:''}
+ ${money(p.price)}
+ ${p.old?`<span class="old-price">${money(p.old)}</span>`:''}
  </div>
  <button class="add" onclick="add(${p.id})">
  ${lang==='uz'?'🛒 Savatga qo‘shish':'🛒 В корзину'}
  </button>
-</article>`;
-}).join('');
+</article>
+`).join('');
 }
 
 function favorite(id,b){
@@ -467,8 +524,7 @@ b.textContent=favorites.includes(id)?'♥':'♡';
 }
 
 function add(id){
-const product=items.find(p=>p.id===id);
-cart.push(product);
+cart.push(items.find(p=>p.id===id));
 updateCart();
 }
 
@@ -513,13 +569,12 @@ document.getElementById('orderOverlay').style.display='none';
 function sendOrder(e){
 e.preventDefault();
 alert(lang==='uz'?
-'Buyurtma shakli tayyor. Buyurtmalarni Telegram orqali qabul qilish tizimini keyingi bosqichda ulaymiz.':
-'Форма готова. Систему приёма заказов через Telegram подключим на следующем этапе.');
+'Buyurtma shakli tayyor. Telegram orqali buyurtma qabul qilish tizimini keyingi bosqichda ulaymiz.':
+'Форма готова. Систему приёма заказов через Telegram подключим позже.');
 }
 
 function setLang(l){
 lang=l;
-
 document.getElementById('tagline').textContent=
 l==='uz'?'Ayollar uchun nafis liboslar ♡':'Элегантная одежда для женщин ♡';
 
@@ -553,8 +608,8 @@ document.getElementById('sendBtn').textContent=
 l==='uz'?'Buyurtmani yuborish':'Отправить заказ';
 
 document.getElementById('payText').textContent=
-l==='uz'?'To‘lov: Uzcard / Humo — to‘lov tizimi ulanishi kerak.':
-'Оплата: Uzcard / Humo — требуется подключить платёжную систему.';
+l==='uz'?'To‘lov: Uzcard / Humo — tizim ulanishi kerak.':
+'Оплата: Uzcard / Humo — требуется подключение.';
 
 document.getElementById('delivery').options[0].text=
 l==='uz'?'Do‘kondan olib ketish':'Самовывоз из магазина';
@@ -568,14 +623,17 @@ updateCart();
 }
 
 document.addEventListener('click',function(e){
-const area=document.querySelector('.menu-area');
-if(!area.contains(e.target))closeMenu();
+const panel=document.getElementById('menuPanel');
+const button=document.querySelector('.menu-button');
+
+if(!panel.contains(e.target)&&!button.contains(e.target)){
+closeMenu();
+}
 });
 
 renderCategories();
 renderProducts();
 updateCart();
-
 </script>
 </body>
 </html>
